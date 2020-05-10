@@ -13,6 +13,10 @@ internal class ProjectConfig {
     fun get(project: Project): GitToolBoxConfigPrj {
       return AppUtil.getServiceInstance(project, ProjectConfig::class.java).getInternal(project)
     }
+
+    fun getMerged(project: Project): MergedProjectConfig {
+      return MergedProjectConfig(AppConfig.get(), get(project))
+    }
   }
 
   private fun getInternal(project: Project): GitToolBoxConfigPrj {
